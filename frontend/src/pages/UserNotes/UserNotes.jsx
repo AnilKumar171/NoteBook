@@ -331,7 +331,7 @@ const UserNotes = () => {
       </div>
 
       {/* AI Summary Modal */}
-      {showAISummary && (
+      {/* {showAISummary && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded-lg max-w-md w-full">
             <div className="flex justify-between items-center mb-4">
@@ -369,7 +369,51 @@ const UserNotes = () => {
             </div>
           </div>
         </div>
-      )}
+      )} */}
+      {/* AI Summary Modal */}
+{showAISummary && (
+  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+    <div className="bg-white p-6 rounded-lg w-full max-w-md h-[80vh] flex flex-col">
+      <div className="flex justify-between items-center mb-4">
+        <h3 className="text-xl font-bold text-blue-600">
+          <FaRobot className="inline mr-2" />
+          AI Summary
+        </h3>
+        <button 
+          onClick={closeAISummary}
+          className="text-gray-500 hover:text-gray-700 text-2xl font-bold"
+        >
+          &times;
+        </button>
+      </div>
+      
+      <div className="mb-4 overflow-y-auto flex-1 space-y-4">
+        <div>
+          <h4 className="font-semibold mb-2">Original Text:</h4>
+          <p className="text-gray-700 bg-gray-100 p-2 rounded whitespace-pre-wrap break-words">
+            {currentNoteContent}
+          </p>
+        </div>
+        
+        <div>
+          <h4 className="font-semibold mb-2">Summary:</h4>
+          <p className="text-gray-800 bg-blue-50 p-3 rounded whitespace-pre-wrap break-words">
+            {aiSummary || "Generating summary..."}
+          </p>
+        </div>
+      </div>
+      
+      <div className="flex justify-end mt-4">
+        <button
+          onClick={closeAISummary}
+          className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+)}
 
       {/* Delete Notes Modal */}
       {deleteBtn ? (

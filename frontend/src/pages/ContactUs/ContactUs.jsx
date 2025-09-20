@@ -49,7 +49,7 @@ const ContactUs = () => {
                   <hr className="border border-green-600 w-full" />
                   <div className="my-6 w-full  flex flex-col gap-y-4 md:gap-y-0 md:flex-row justify-around">
                     <a
-                      href="mailto:saibalajipujari@gmail.com"
+                      href="mailto:anilkumarbangi9441@gmail.com"
                       className=" shadow-md  border border-green-600 hover:bg-green-700 text-sm hover:text-white text-green-600 py-2 px-2 flex items-center gap-x-2 rounded"
                     >
                       <SiGmail />

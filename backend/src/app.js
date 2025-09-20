@@ -18,7 +18,9 @@ app.use(bodyParser.json());
 // --------- Import Routes -------------
 import user from "./routes/user.routes.js";
 import notes from "./routes/notes.routes.js";
-
+app.get("/", (req, res) => {
+    res.send("API is running");
+  });
 // ----------- Routes declaration ---------
 app.use("/api/v1/user", user);
 app.use("/api/v1/notes", jwtAuthMiddleware, notes);
