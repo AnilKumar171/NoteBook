@@ -58,7 +58,14 @@ app.use(express.static(path.join(__dirname, "client/build")));
 
 // --------- React Router catch-all (MUST be last route) ----------
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client/build", "index.html"));
+  const indexPath = path.join(__dirname, "client/build", "index.html");
+  console.log("Serving index.html for route:", req.originalUrl);
+  res.sendFile(indexPath, (err) => {
+    if (err) {
+      console.error("Error serving index.html:", err);
+      res.status(500).send("Error serving application");
+    }
+  });
 });
 
 // ----------------- Error handler ---------
