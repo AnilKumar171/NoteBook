@@ -7,12 +7,25 @@ import { jwtAuthMiddleware } from "./middlewares/auth.middleware.js";
 const app = express();
 
 // ----------- Middlewares ----------
+const allowedOrigins = [
+  "http://localhost:5173",                  // for local development
+  "https://notebook-1-1sy0.onrender.com"   // for deployed frontend
+];
+
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN,
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true); // allow tools like Postman
+      if (allowedOrigins.indexOf(origin) === -1) {
+        return callback(new Error("CORS policy: Origin not allowed"), false);
+      }
+      return callback(null, true);
+    },
     credentials: true,
   })
 );
+app.options("*", cors());
+
 app.use(bodyParser.json());
 
 // --------- Import Routes -------------
